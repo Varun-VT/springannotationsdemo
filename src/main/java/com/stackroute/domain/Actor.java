@@ -3,6 +3,9 @@ package com.stackroute.domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component
 public class Actor {
 
@@ -25,12 +28,13 @@ public class Actor {
     public void setAge(int age) {
         this.age = age;
     }
-
-
+    @PostConstruct
     public void init(){
         System.out.println("Actor Bean is initiated");
     }
 
+
+    @PreDestroy
     public void destroy(){
         System.out.println("Actor Bean will destroy now");
     }
