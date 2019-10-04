@@ -2,6 +2,7 @@ package com.stackroute;
 
 import com.stackroute.domain.Actor;
 import com.stackroute.domain.Movie;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,30 +16,30 @@ import org.springframework.context.annotation.PropertySource;
 
 public class ConfigurationClass {
 
+
     @Bean(name = {"actor", "main"})
     public Actor actor(){
-        Actor actor= new Actor("Akshay Kumar","Male",50);
+        Actor actor= new Actor();
+        return actor;
+    }
+    @Bean(name = "actor1")
+    public Actor actor1(){
+        Actor actor= new Actor("The Rock","Male", 50);
         return actor;
     }
 
-    @Bean(name = "actor1")
-    public Actor actor1(){
-        return new Actor("Daniel Craig" ,"Male",50);
-    }
-
     @Bean(name = "movieA")
-    public Movie movieA(){
+    @Autowired
+    public Movie movieA(Actor actor){
         Movie movieA= new Movie();
-        movieA.setActor(actor());
         return movieA;
     }
 
     @Bean(name = "movieB")
+    @Autowired
     public Movie movieB(){
-        Movie movie= new Movie();
-        movie.setActor(actor1());
-        return movie;
+        Movie movieA= new Movie();
+        movieA.setActor(actor1());
+        return movieA;
     }
-
-
 }

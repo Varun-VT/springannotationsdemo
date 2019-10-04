@@ -15,12 +15,12 @@ public class Main {
         Movie movieA= (Movie) context.getBean("movieA");
         System.out.println(movieA.getActor());
 
-        Movie movieB= (Movie) context.getBean("movieB");
-        System.out.println("The second movie I watched is:"+" movieB");
+        System.out.println("Now, using constructor injection autowiring");
+        System.out.println("The Second movie I watched is:"+" movieA");
         System.out.println("The actor of this movie was");
+        Movie movieB= (Movie) context.getBean("movieB");
         System.out.println(movieB.getActor());
 
-        System.out.println(movieA == movieB);
         ((ConfigurableApplicationContext)context).close();
 
     }
