@@ -17,12 +17,11 @@ public class ConfigurationClass {
 
     @Bean(name = {"actor", "main"})
     public Actor actor(){
-        return new Actor("Akshay Kumar" ,"Male",50);
-    }
-
-    @Bean(name = "actor1")
-    public Actor actor1(){
-        return new Actor("Daniel Craig" ,"Male",50);
+        Actor actor= new Actor();
+        actor.setAge(50);
+        actor.setName("Akshay Kumar");
+        actor.setGender("Male");
+        return actor;
     }
 
     @Bean(name = "movieA")
@@ -32,11 +31,5 @@ public class ConfigurationClass {
         return movieA;
     }
 
-    @Bean(name = "movieB")
-    public Movie movieB(){
-        Movie movie= new Movie();
-        movie.setActor(actor1());
-        return movie;
-    }
 
 }

@@ -15,10 +15,6 @@ public class Main {
         Movie movieA= (Movie) context.getBean("movieA");
         System.out.println(movieA.getActor());
 
-        Movie movieB= (Movie) context.getBean("movieB");
-        System.out.println("The second movie I watched is:"+" movieB");
-        System.out.println("The actor of this movie was");
-        System.out.println(movieB.getActor());
 
         ((ConfigurableApplicationContext)context).close();
 
